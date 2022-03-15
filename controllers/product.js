@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
-
-const Product = mongoose.model("Product", { name: String ,img: String, price: Number, quantity: Number, desc: String, status: Boolean});
+import Product from "../models/product"
 
 export const list = async (req,res) => {
   try {
@@ -14,8 +12,9 @@ export const list = async (req,res) => {
 }
 
 export const get = async (req,res) =>{
+    const filter = {_id: req.params.id}
     try {
-         const products = await Product.findById(req.params.id);
+         const products = await Product.findOne(filter);
         res.json(products)
     } catch (error) {
          res.status(400).json({
@@ -25,8 +24,9 @@ export const get = async (req,res) =>{
 }
 
 export const remove = async (req,res) =>{
+    const condition = {_id: req.params.id}
    try {
-       const products = await Product.findByIdAndRemove(req.params.id);
+       const products = await Product.findOneAndDelete(condition);
        res.json(products);
    } catch (error) {
         res.status(400).json({
@@ -47,8 +47,11 @@ export const create = async (req,res) =>{
 }
 
 export const update = async (req, res) =>{
+    const condition = {_id: req.params.id}
+    const doc = req.body
+    const option = {new: true}
     try {
-        const products = await Product.findByIdAndUpdate(req.params.id,(req.body));
+        const products = await Product.findOneAndUpdate(condition,doc,option);
         res.json(products)
     } catch (error) {
           res.status(400).json({
