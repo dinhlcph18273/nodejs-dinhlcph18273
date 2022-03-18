@@ -22,5 +22,5 @@ const userSchema = new Schema({
         minlength: 6,
         required: true
     }
-})
+}, {timestamps:true})
 export default mongoose.model("User", userSchema)
