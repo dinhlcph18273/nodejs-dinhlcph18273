@@ -1,35 +1,17 @@
 import User from "../models/user"
 
-export const listUser = async(req, res) => {
+export const userById = async(req,res,next,id) =>{
+    const user = await User.findById(id).exec();
     try {
-        const user = await User.find();
-        res.json(user);
-    } catch (error) {
-        res.status(400).json({
-             message: "Khong tim duoc"
-        })
-    }
-}
+        if(!user){
+            res.status(400).json({
+                message:"Khong tim thay user"
+            })
+        }
 
-export const postUser = async (req,res) =>{
-    try {
-        const user = await new User(req.body).save();
-        res.json(user);
+        req.profile = user;
+        next();
     } catch (error) {
-        res.status(400).json({
-            message:"khong them dc user"
-        })
-    }
-}
-
-export const deleteUser = async(req,res) =>{
-    const condtition = {_id: req.params.id}
-    try {
-        const user = await findOneAndDelete(condtition);
-        res.json(user);
-    } catch (error) {
-        res.status(400).json({
-            message:"khong xoa dc user"
-        })
+        
     }
 }

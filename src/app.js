@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 import productRoute from "../routes/product"
 import postRoute from "../routes/post"
-import userRoute from "../routes/user"
+import userRoute from "../routes/auth"
 import categoryRoute from "../routes/category"
 
 const app = express();

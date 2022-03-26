@@ -5,26 +5,15 @@ const productSchema = new Schema({
     name: {
         type : String,
         minlength: 5,
-        required: true
-    },
-    img: {
-        type: String,
-        required: true
+        required: true,
+        unique:true
     },
     price: {
         type: Number,
         required: true
     },
-    quantity: {
-        type: Number,
-        required: true
-    },
-    desc: {
+    img: {
         type: String,
-        required: true
-    },
-    status: {
-        type: Boolean,
         required: true
     },
     category: {
