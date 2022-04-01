@@ -23,7 +23,6 @@ app.use("/api",userRoute)
 app.use("/api",categoryRoute)
 
 
-
 // connect database
 mongoose.connect("mongodb://localhost:27017/nodejs")
 .then(()=> console.log("Connect db ok~"))

@@ -10,9 +10,6 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    salt: {
-        type: String
-    },
     password: {
         type: String,
         required: true
@@ -20,7 +17,7 @@ const userSchema = new Schema({
     role: {
         type: Number,
         default:0
-    }
+    }   
 }, {timestamps:true});
 
 userSchema.methods = {
