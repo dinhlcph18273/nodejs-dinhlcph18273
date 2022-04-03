@@ -1,6 +1,5 @@
 import Product from "../models/product"
 import slugify from "slugify";
-import { json } from "express/lib/response";
 
 export const list = async (req,res) => {
   try {
@@ -65,8 +64,21 @@ export const update = async (req, res) =>{
 }
 
 export const search = async(req,res) => {
+   try {
     const q = req.query.q
     const result = {$text: {$search: q}}
     const search = await Product.find(result)
     res.json(search)
+   } catch (error) {
+        console.log(error)
+   }
+}
+
+export const sort = async(req,res)=>{
+    try {
+        const product = await Product.find({}).sort({[req.params.sort]: req.params.order})
+        res.json(product)
+    } catch (error) {
+        console.log(error)
+    }
 }
