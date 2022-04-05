@@ -9,8 +9,8 @@ const router = Router();
 router.get("/category",listCate);
 router.get("/category/:id",read);
 router.post("/category/:userId",requireSignin,isAuth,isAdmin,createCate);
-router.put("/category/:id", updateCate);
-router.delete("/category/:id", removeCate);
+router.put("/category/:id/:userId",requireSignin,isAuth,isAdmin, updateCate);
+router.delete("/category/:id/:userId",requireSignin,isAuth,isAdmin, removeCate);
 
 
 router.param("userId", userById)
