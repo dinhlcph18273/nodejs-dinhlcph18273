@@ -15,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json())
-
+    
 // route
 app.use("/api",productRoute)
 app.use("/api",postRoute)

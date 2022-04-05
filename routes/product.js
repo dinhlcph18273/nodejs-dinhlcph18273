@@ -6,12 +6,12 @@ import { checkAuth, isAdmin, isAuth, requireSignin } from "../middlewares/checkA
 const router = Router();
 
 
-router.get("/products", checkAuth, list)
-router.get("/products/:id",checkAuth, get);
+router.get("/products", list)
+router.get("/products/:id", get);
 router.post("/products/:userId",requireSignin,isAuth,isAdmin, create);
 router.delete("/products/:id/:userId",requireSignin,isAuth,isAdmin, remove);
 router.put("/products/:id/:userId",requireSignin,isAuth,isAdmin,update)
-router.get("/products/?_sort=:sort&order=:order",checkAuth, sort)
+router.get("/products/?_sort=:sort&order=:order", sort)
 router.post("/search?", search)
 
 
