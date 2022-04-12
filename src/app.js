@@ -24,7 +24,7 @@ app.use("/api",categoryRoute)
 
 
 // connect database
-mongoose.connect("mongodb://localhost:27017/nodejs")
+mongoose.connect("mongodb+srv://dinhlcph18273:dinh28102002@cluster0.gmqlr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 .then(()=> console.log("Connect db ok~"))
 .catch((error)=> console.log(error))
 
