@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./src/app.js --exec babel-node -e js"
+    "start": "nodemon ./src/app.js --exec babel-node -e js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,6 @@
     "url": "https://github.com/dinhlcph18273/nodejs-dinhlcph18273/issues"
   },
   "homepage": "https://github.com/dinhlcph18273/nodejs-dinhlcph18273#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  },
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -30,6 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.6",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
     "slugify": "^1.6.5"
   }
 }
