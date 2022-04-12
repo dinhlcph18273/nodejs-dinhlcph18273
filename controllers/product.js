@@ -2,8 +2,10 @@ import Product from "../models/product"
 import slugify from "slugify";
 
 export const list = async (req,res) => {
+    const sortBy = req.query.sort
+    const orderBy = req.query.order
   try {
-        const products = await Product.find();
+        const products = await Product.find({}).sort({[sortBy]:orderBy});
         res.json(products)
   } catch (error) {
       res.status(400).json({
@@ -65,20 +67,11 @@ export const update = async (req, res) =>{
 
 export const search = async(req,res) => {
    try {
-    const q = req.query.q
-    const result = {$text: {$search: q}}
+    const name = req.query.name
+    const result = {$text: {$search: name}}
     const search = await Product.find(result)
     res.json(search)
    } catch (error) {
         console.log(error)
    }
-}
-
-export const sort = async(req,res)=>{
-    try {
-        const product = await Product.find({}).sort({[req.params.sort]: req.params.order})
-        res.json(product)
-    } catch (error) {
-        console.log(error)
-    }
 }
