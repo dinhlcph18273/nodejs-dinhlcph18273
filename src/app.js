@@ -29,7 +29,7 @@ mongoose.connect("mongodb+srv://dinhlcph18273:dinh28102002@cluster0.gmqlr.mongod
 .catch((error)=> console.log(error))
 
 // connection
-const PORT= 8000;
+const PORT= process.env.PORT || 8000;
 app.listen(PORT, () => {{
     console.log("Server is running port" ,PORT);
 }});
