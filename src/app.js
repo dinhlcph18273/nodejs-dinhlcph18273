@@ -7,6 +7,7 @@ import productRoute from "../routes/product"
 import postRoute from "../routes/post"
 import userRoute from "../routes/auth"
 import categoryRoute from "../routes/category"
+import orderRoute from "../routes/order"
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use("/api",productRoute)
 app.use("/api",postRoute)
 app.use("/api",userRoute)
 app.use("/api",categoryRoute)
-
+app.use("/api",orderRoute)
 
 // connect database
 mongoose.connect("mongodb+srv://dinhlcph18273:dinh28102002@cluster0.gmqlr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")

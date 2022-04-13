@@ -2,8 +2,8 @@ import Product from "../models/product"
 import slugify from "slugify";
 
 export const list = async (req,res) => {
-    const sortBy = req.query.sort
-    const orderBy = req.query.order
+    const sortBy = req.query.sortBy ? req.query.sortBy : "price"
+    const orderBy = req.query.order ? req.query.order : "asc"
   try {
         const products = await Product.find({}).sort({[sortBy]:orderBy});
         res.json(products)
