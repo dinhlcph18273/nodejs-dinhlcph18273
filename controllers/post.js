@@ -6,9 +6,9 @@ const Post = mongoose.model("Post", {title: String,img: String, desc: String});
 export const listPost = async (req,res) => {
   try {
       const posts = await Post.find();
-      res.json(posts)
+      return res.json(posts)
   } catch (error) {
-      res.status(400).json({
+      return res.status(400).json({
           message:"khong tim duoc"
       })
   }
@@ -17,9 +17,9 @@ export const listPost = async (req,res) => {
 export const getPost = async (req,res) =>{
     try {
          const posts = await Post.findById(req.params.id);
-        res.json(posts)
+        return res.json(posts)
     } catch (error) {
-         res.status(400).json({
+         return res.status(400).json({
           message:"khong tim duoc"
       })
     }
@@ -28,9 +28,9 @@ export const getPost = async (req,res) =>{
 export const removePost = async (req,res) =>{
    try {
        const posts = await Post.findByIdAndRemove(req.params.id);
-       res.json(posts);
+       return res.json(posts);
    } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
           message:"khong xóa duoc"
       })
    }
@@ -39,9 +39,9 @@ export const removePost = async (req,res) =>{
 export const createPost = async (req,res) =>{
   try {
       const post = await new Post(req.body).save();
-      res.json(post)
+      return res.json(post)
   } catch (error) {
-      res.status(400).json({
+      return res.status(400).json({
           message:"khong them duoc"
       })
   }
@@ -50,9 +50,9 @@ export const createPost = async (req,res) =>{
 export const updatePost = async (req, res) =>{
     try {
         const posts = await Post.findByIdAndUpdate(req.params.id,(req.body));
-        res.json(posts)
+        return res.json(posts)
     } catch (error) {
-          res.status(400).json({
+          return res.status(400).json({
           message:"khong update duoc"
       })
     }

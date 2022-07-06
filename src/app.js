@@ -11,7 +11,6 @@ import orderRoute from "../routes/order"
 
 const app = express();
 
-
 // middleware
 app.use(cors());
 app.use(morgan("tiny"));

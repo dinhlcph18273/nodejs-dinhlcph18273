@@ -11,7 +11,7 @@ export const signup = async(req,res) =>{
             })
         }
         const user = await new User({email, name, password}).save();
-        res.json({
+       return res.json({
             user: {
                 _id: user._id,
                 email: user.email,
@@ -19,7 +19,7 @@ export const signup = async(req,res) =>{
             }
         })
     } catch (error) {
-         res.status(400).json({
+        return res.status(400).json({
                 message:"Đăng ký thất bại"
             })
     }
@@ -31,19 +31,19 @@ export const signin = async(req,res) => {
     try {
         const user = await User.findOne({email}).exec();
         if(!user){
-             res.status(400).json({
+            return res.status(400).json({
                 message:"Tk k ton tai"
             })
         }
         if(!user.authenticate(password)){
-            res.status(400).json({
+           return res.status(400).json({
                 message:"sai pass bé ưi"
             })
         }
         
         const token = jwt.sign({_id:user._id}, "123456",{expiresIn: "1h"})
 
-        res.json({
+       return res.json({
             token,
               user: {
                 _id: user._id,
@@ -53,7 +53,7 @@ export const signin = async(req,res) => {
             }
         })
     } catch (error) {
-          res.status(400).json({
+        return res.status(400).json({
                 message:"không đăng nhập được"
             })
     }
